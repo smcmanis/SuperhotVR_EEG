@@ -17,9 +17,11 @@ MelonLoader is used to load and inject the mods into games built in Unity.
 
 #### Other dependencies
 
-TBA
+TBD
 
 ### Download and install the mod
+
+TBD, but the process will essentially be:
 
 1. Download `SuperhotVrEeg.dll` from the latest mod [release](https://github.com/smcmanis/SuperhotVR_EEG/releases/latest).
 
