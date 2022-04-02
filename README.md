@@ -1,6 +1,10 @@
 
 # SuperhotVR EEG
 
+## About
+
+TBD
+
 ## Installation
 
 ### Dependencies
@@ -36,3 +40,5 @@ The game launch should be preceded by the MelonLoader console, which will show i
   
 
 ### In-game
+
+TBD
