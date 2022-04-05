@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
+using MelonLoader;
+using SuperhotVR_EEG;
 
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
@@ -24,3 +26,6 @@ using System.Runtime.CompilerServices;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
+
+[assembly: MelonInfo(typeof(MyClass), "My Mod Name", "version", "Author Name")]
+[assembly: MelonGame("SUPERHOT_Team", "SUPERHOT_VR")]

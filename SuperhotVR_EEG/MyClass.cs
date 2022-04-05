@@ -1,10 +1,16 @@
-﻿using System;
+﻿using MelonLoader;
+using UnityEngine;
+
 namespace SuperhotVR_EEG
 {
-    public class MyClass
+    public class MyClass : MelonMod
     {
-        public MyClass()
+        public override void OnUpdate()
         {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                LoggerInstance.Msg("You just pressed T");
+            }
         }
     }
 }
