@@ -9,7 +9,7 @@ namespace SuperhotVR_EEG
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
-                LoggerInstance.Msg("You just pressed T");
+                MelonLogger.Msg("You just pressed T");
             }
         }
     }
