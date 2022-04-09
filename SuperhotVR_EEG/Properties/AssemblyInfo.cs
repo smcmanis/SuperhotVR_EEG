@@ -27,5 +27,5 @@ using SuperhotVR_EEG;
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
 
-[assembly: MelonInfo(typeof(MyClass), "My Mod Name", "version", "Author Name")]
+[assembly: MelonInfo(typeof(SuperhotVR_EEG.Main), "My Mod Name", "version", "Author Name")]
 [assembly: MelonGame("SUPERHOT_Team", "SUPERHOT_VR")]

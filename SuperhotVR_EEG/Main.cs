@@ -4,7 +4,7 @@ using HarmonyLib;
 
 namespace SuperhotVR_EEG
 {
-    public class MyClass : MelonMod
+    public class Main : MelonMod
     {
         public override void OnUpdate()
         {
