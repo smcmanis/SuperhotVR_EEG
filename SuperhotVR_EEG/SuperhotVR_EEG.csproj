@@ -49,15 +49,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetAggregateTargetTimescalePatch.cs" />
+    <Compile Include="OverrideGlobalTimescale.cs" />
     <Compile Include="TimeshiftingTransformUpdatePatch.cs" />
     <Compile Include="DisableMovementTimeShift.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
