@@ -3,12 +3,14 @@ using UnityEngine;
 
 namespace SuperhotVR_EEG
 {
-    [HarmonyPatch(typeof(TimeControl), "GetNewInstantTimeShifter")]
-    static class DisableMovementTimeShift
+    internal class StopTimeMod : IMod
     {
-        static void Prefix(TimeControl __instance)
+        public static string Label = "StopTime";
+
+        [HarmonyPatch(typeof(TimeControl), "GetNewInstantTimeShifter")]
+        static class DisableMovementTimeShift
         {
-            if (false)
+            static void Prefix(TimeControl __instance)
             {
                 foreach (var x in GameObject.FindObjectsOfType<PlayerTimeshiftSystem>())
                 {

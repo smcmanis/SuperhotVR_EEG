@@ -50,10 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OverrideGlobalTimescale.cs" />
-    <Compile Include="TimeshiftingTransformUpdatePatch.cs" />
-    <Compile Include="DisableMovementTimeShift.cs" />
+    <Compile Include="IMod.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModRunner.cs" />
+    <Compile Include="StopTimeMod.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
