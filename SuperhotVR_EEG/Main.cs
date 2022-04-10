@@ -14,19 +14,4 @@ namespace SuperhotVR_EEG
             }
         }
     }
-    [HarmonyPatch(typeof(TimeControl), "GetNewInstantTimeShifter")]
-    static class Patch10
-    {
-        static void Prefix(TimeControl __instance)
-        {
-            MelonLogger.Msg("TimeControl.GetNewInstantTimeShifter");
-            foreach (var x in GameObject.FindObjectsOfType<PlayerTimeshiftSystem>())
-            {
-                x.SetPlayerTimeshift(false);
-            }
-            
-
-        }
-    }
-
 }
