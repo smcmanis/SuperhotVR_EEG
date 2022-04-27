@@ -34,10 +34,27 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SUPERHOT VR\SUPERHOTVR_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Firebase.App, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>notion-unity\Packages\Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Auth, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>notion-unity\Packages\Firebase.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Database, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>notion-unity\Packages\Firebase.Database.dll</HintPath>
+    </Reference>
     <Reference Include="MelonLoader">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SUPERHOT VR\MelonLoader\MelonLoader.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>notion-unity\Library\PackageCache\jillejr.newtonsoft.json-for-unity@13.0.102\Plugins\Newtonsoft.Json Editor\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="Unity.Tasks, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SUPERHOT VR\SUPERHOTVR_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
@@ -47,13 +64,127 @@
     <Reference Include="UnityEngine.InputModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SUPERHOT VR\SUPERHOTVR_Data\Managed\UnityEngine.InputModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>notion-unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Device.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\FirebaseController.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\AccelerometerHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\BrainwavesPowerByBandHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\BrainwavesPSDHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\BrainwavesRawHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\BrainwavesRawUnfilteredHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\CalmHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\FocusHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\IMetricHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\ISettingsHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\KinesisHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\MetricExtentions.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\Metrics.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\SettingsHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\SignalQualityHandler.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\NeurosityUser.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Notion.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\SubscriptionManager.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Accelerometer.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\BaseMetric.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Calm.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\ChannelQuality.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\DeviceInfo.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\DeviceStatus.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Epoch.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\EpochInfo.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Focus.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Kinesis.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\PowerByBand.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\PowerByBandData.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\PSD.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\PSDInfo.cs" />
+    <Compile Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Settings.cs" />
+    <Compile Include="NotionGodClass.cs" />
     <Compile Include="OverrideGlobalTimescale.cs" />
-    <Compile Include="TimeshiftingTransformUpdatePatch.cs" />
     <Compile Include="DisableMovementTimeShift.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="notion-unity\Assets\google-services.json" />
+    <None Include="notion-unity\Assets\google-services.json.meta" />
+    <None Include="notion-unity\Assets\GoogleService-Info.plist" />
+    <None Include="notion-unity\Assets\GoogleService-Info.plist.meta" />
+    <None Include="notion-unity\Assets\Scripts.meta" />
+    <None Include="notion-unity\Assets\Scripts\New Device.asset" />
+    <None Include="notion-unity\Assets\Scripts\New Device.asset.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Device.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Example.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\FirebaseController.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\AccelerometerHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\BrainwavesPowerByBandHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\BrainwavesPSDHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\BrainwavesRawHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\BrainwavesRawUnfilteredHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\CalmHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\FocusHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\IMetricHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\ISettingsHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\KinesisHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\MetricExtentions.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\Metrics.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\SettingsHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Handlers\SignalQualityHandler.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\NeurosityUser.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Notion.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\SubscriptionManager.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Accelerometer.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\BaseMetric.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Calm.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\ChannelQuality.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\DeviceInfo.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\DeviceStatus.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Epoch.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\EpochInfo.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Focus.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Kinesis.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\PowerByBand.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\PowerByBandData.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\PSD.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\PSDInfo.cs.meta" />
+    <None Include="notion-unity\Assets\Scripts\Notion-Unity\Types\Settings.cs.meta" />
+    <None Include="notion-unity\Assets\StreamingAssets.meta" />
+    <None Include="notion-unity\Assets\StreamingAssets\google-services-desktop.json" />
+    <None Include="notion-unity\Assets\StreamingAssets\google-services-desktop.json.meta" />
+    <None Include="notion-unity\ProjectSettings\AudioManager.asset" />
+    <None Include="notion-unity\ProjectSettings\ClusterInputManager.asset" />
+    <None Include="notion-unity\ProjectSettings\DynamicsManager.asset" />
+    <None Include="notion-unity\ProjectSettings\EditorBuildSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\EditorSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\GraphicsSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\InputManager.asset" />
+    <None Include="notion-unity\ProjectSettings\NavMeshAreas.asset" />
+    <None Include="notion-unity\ProjectSettings\PackageManagerSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\Physics2DSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\PresetManager.asset" />
+    <None Include="notion-unity\ProjectSettings\ProjectSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\QualitySettings.asset" />
+    <None Include="notion-unity\ProjectSettings\TagManager.asset" />
+    <None Include="notion-unity\ProjectSettings\TimelineSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\TimeManager.asset" />
+    <None Include="notion-unity\ProjectSettings\UnityConnectSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\URPProjectSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\VersionControlSettings.asset" />
+    <None Include="notion-unity\ProjectSettings\VFXManager.asset" />
+    <None Include="notion-unity\ProjectSettings\XRSettings.asset" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="notion-unity\ProjectSettings\AndroidResolverDependencies.xml" />
+    <Content Include="notion-unity\ProjectSettings\GvhProjectSettings.xml" />
+    <Content Include="notion-unity\ProjectSettings\ProjectVersion.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
