@@ -6,14 +6,18 @@ namespace SuperhotVR_EEG
 {
     public class Main : MelonMod
     {
+        private NotionGodClass NotionGodClass = new NotionGodClass();
+
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.G))
             {
                 MelonLogger.Msg("You just pressed G");
+                NotionGodClass.OnEnable();
             }
         }
     }
+
     [HarmonyPatch(typeof(TimeControl), "GetNewInstantTimeShifter")]
     static class Patch10
     {
