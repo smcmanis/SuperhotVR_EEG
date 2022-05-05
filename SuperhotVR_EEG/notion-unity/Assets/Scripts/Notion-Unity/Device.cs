@@ -6,13 +6,13 @@ namespace Notion.Unity
     public class Device : ScriptableObject
     {
         [SerializeField]
-        private string _email;
+        private string _email ="simon.mcmanis@gmail.com";
 
         [SerializeField]
-        private string _password;
+        private string _password = "SdM3wTu@&Tt^%4";
 
         [SerializeField]
-        private string _deviceId;
+        private string _deviceId = "11bd87018da80c924a01602bbf3bb209";
 
         public string Email => _email;
         public string Password => _password;

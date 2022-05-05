@@ -26,7 +26,7 @@ namespace SuperhotVR_EEG
             if (_device == null)
             {
                 _device = this.getDevice();
-                Login();
+                 
 
                 return;
             }
@@ -39,8 +39,11 @@ namespace SuperhotVR_EEG
 
         public async Task Login()
         {
+           // Debug.Log("hel");
             _controller = new FirebaseController();
+           // Debug.Log("cont");
             await _controller.Initialize();
+           // Debug.Log("he");
             _notion = new Notion.Unity.Notion(_controller);
             await _notion.Login(_device);
 
