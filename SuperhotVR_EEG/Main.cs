@@ -1,56 +1,61 @@
 ﻿using MelonLoader;
 using UnityEngine;
 using HarmonyLib;
-using WebSocketSharp;
-using WebSocketSharp.Server;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using UnityEngine.Networking;
+using System.Collections;
 
 namespace SuperhotVR_EEG
 {
     public class Main : MelonMod
     {
-        private static WebSocketServer s;
-        private static float focusTime = 0.2f;
 
-        public override void OnApplicationStart()
-        {
-           
-            s = new WebSocketServer(11111);
-            s.AddWebSocketService<Focus>("/Focus");
-            s.Start();
-
-            MelonLogger.Msg("started socket");
-           
-        }
-        public override void OnApplicationQuit()
-        {
-            s.Stop(); 
-            base.OnApplicationQuit();
-        }
         public override void OnUpdate()
         {
             
             if (Input.GetKeyDown(KeyCode.G))
             {
                 MelonLogger.Msg("You just pressed G");
-                MelonLogger.Msg(s.ToString());
-                MelonLogger.Msg(focusTime);
-            }
-        }
-        public class Focus : WebSocketBehavior
-        {
-            protected override void OnMessage(MessageEventArgs e)
-            {
-                if (e.Data != null)
-                {
-                    MelonLogger.Msg(e.Data);
-                    focusTime = float.Parse(e.Data);
-                }
+ 
             }
         }
 
+       
         [HarmonyPatch(typeof(TimeControl), "GetAggregateTargetTimescale")]
         static class TimeControl_GetAggregateTargetTimescale_Patch
         {
+            public async static void getFocus(float currentFocus)
+            {
+
+                queue.Enqueue(currentFocus + 0.1f);
+           //    // if this works, i'll have to use a queue or something to store the async focus values
+            //    // then pull from queue
+            //    // if queue empty, use last value or something
+            //    // Just need some way to handle the async stuff
+            //    float focus = 0.1f;
+            //    try
+            //    {
+            //        HttpResponseMessage response = await client.GetAsync("http://192.168.0.13:8000");
+            //        response.EnsureSuccessStatusCode();
+            //        string responseBody = await response.Content.ReadAsStringAsync();
+            //        MelonLogger.Msg(responseBody);
+
+            //    }
+            //    catch (HttpRequestException ex)
+            //    {
+            //        MelonLogger.Msg("\nException Caught!");
+            //        MelonLogger.Msg("Message :{0} ", ex.Message);
+            //    }
+            //    queue.Enqueue(focus);
+            }
+
+            //private static readonly HttpClient client = new HttpClient();
+
+            
+        
+            private static Queue<float> queue = new Queue<float>();
+
             static bool Prefix(ref float __result)
             {
                 /**
@@ -63,22 +68,18 @@ namespace SuperhotVR_EEG
                  *  Here, we can inject are own timescale value, such as one calculated for a 
                  *  PlayerFocusLevel etc.
                 **/
-                MelonLogger.Msg("get aggregahate"+ focusTime); 
-                   
-                if (focusTime > 0.3)
+                
+                if (queue.Count > 0)
                 {
-                    MelonLogger.Msg("Setting aggregate timescale to 0.1");
-                    __result = focusTime;
+                    __result = queue.Dequeue();
                 } else
                 {
-                    MelonLogger.Msg("Setting aggregate timescale to 0.3");
-                    __result = focusTime;
+                    __result = 0f;
                 }
+                getFocus(__result);
+                MelonLogger.Msg(__result);
                 return false; //don't let the original method run
             }
         }
     }
-
-    
-
 }
