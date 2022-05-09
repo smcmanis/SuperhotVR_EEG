@@ -17,6 +17,7 @@ namespace SuperhotVR_EEG
         public static float currentFocus = 0f;
         public static float currentTimescale = DEFAULT_TIMESCALE;
         public static bool useFocusTimescale = true;
+        public static string difficulty = "NORMAL";
 
         public class Focus : WebSocketBehavior
         {
@@ -46,6 +47,36 @@ namespace SuperhotVR_EEG
         }
 
         public static float timescaleFromFocus(float focus)
+        {
+            if (difficulty == "NORMAL")
+            {
+                return normalTimescaleFromFocus(focus);
+            } 
+            else if (difficulty == "EASY")
+            {
+                return easyTimescaleFromFocus(focus);
+            } else
+            {
+                return -1f;
+            }
+        }
+        public static float easyTimescaleFromFocus(float focus)
+        {
+            float timescale = 0f;
+            if (focus < 0.1f)
+            {
+                timescale = 1f;
+            } 
+            else if (focus < 0.3f)
+            {
+                timescale = 0.3f;
+            } else
+            {
+                timescale = 0.05f;
+            }
+            return timescale;
+        }
+            public static float normalTimescaleFromFocus(float focus)
         {
             float timescale = 0f;
             if (focus < 0.1f)
@@ -103,6 +134,21 @@ namespace SuperhotVR_EEG
                 useFocusTimescale = !useFocusTimescale;
                 MelonLogger.Msg("Focus Timescale is: " + useFocusTimescale);
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                difficulty = "EASY";
+                MelonLogger.Msg("Difficulty is: " + difficulty );
+            }
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                difficulty = "NORMAL";
+                MelonLogger.Msg("Difficulty is: " + difficulty);
+            }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                difficulty = "HARD";
+                MelonLogger.Msg("Difficulty is: " + difficulty);
+            }
         }
 
        
@@ -121,7 +167,7 @@ namespace SuperhotVR_EEG
                  *  Here, we can inject are own timescale value, such as one calculated for a 
                  *  PlayerFocusLevel etc.
                 **/
-
+                
                 if (useFocusTimescale)
                 {
                     __result = timescaleFromFocus(currentFocus);
