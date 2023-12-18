@@ -167,7 +167,7 @@ namespace SuperhotVR_EEG
                  *  Here, we can inject are own timescale value, such as one calculated for a 
                  *  PlayerFocusLevel etc.
                 **/
-                
+
                 if (useFocusTimescale)
                 {
                     __result = timescaleFromFocus(currentFocus);
